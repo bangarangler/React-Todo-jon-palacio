@@ -3,15 +3,13 @@
 
 import React from 'react';
 import Todo from './Todo';
-import TodoForm from './TodoForm'
 
 const TodoList = props => {
     return (
-        <div className="Todo">
-            <div className="TodoList">
-                {props.todos.map(todo => <Todo todos={todo}/>)}
-            </div>
-            <TodoForm />
+        <div className="TodoList">
+            {props.todos.map((todo, index) => {
+                return <Todo todos={todo} id={index}/>
+            })}
         </div>
     );
 }

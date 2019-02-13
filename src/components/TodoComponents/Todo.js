@@ -1,13 +1,7 @@
 import React from 'react';
 
 function Todo(props){
-    return (
-        <div className="Todo">
-            {this.state.ToDoList.map((task, index) => (
-            <Todo key={index} task={task} />
-            ))}
-        </div>
-    );
+    return <li>{props.todos.task}</li>;
 }
 
 export default Todo;

@@ -1,5 +1,6 @@
 import React from 'react';
 import TodoList from './components/TodoComponents/TodoList';
+import TodoForm from './components/TodoComponents/TodoForm';
 
 const todos=[];
 
@@ -14,12 +15,9 @@ class App extends React.Component {
 
   addTask = event => {
     event.preventDefault();
-    const newTask = {
-      task: this.state.task
-    };
 
     this.setState({
-      ToDoList: [...this.state.ToDoList, newTask],
+      todos: [...this.state.todos, {task: this.state.task}],
       task:''
     });
   };
@@ -34,7 +32,15 @@ class App extends React.Component {
   render() {
     return (
       <div>
-        <TodoList todos={this.state.todos} />
+        <TodoList
+          todos={this.state.todos}
+        />
+
+        <TodoForm 
+          handleChanges={this.handleChanges}
+          task={this.state.task} 
+          addTask={this.addTask}
+        />
       </div>
     );
   }
