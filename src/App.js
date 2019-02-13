@@ -13,6 +13,14 @@ class App extends React.Component {
     }
   }
 
+  handleChanges = event => {
+    this.setState({
+      'task': event.target.value
+    });
+  };
+
+
+
   addTask = event => {
     event.preventDefault();
 
@@ -27,15 +35,33 @@ class App extends React.Component {
     });
   };
 
-  handleChanges = event => {
-    this.setState({
-      ['task']: event.target.value
-    });
-  };
-
   taskToggle = (event) =>{
     event.target.classList.toggle('completed');
+    this.setState({
+      todos: this.state.todos.map(todo => {
+        if (todo.completed === false) {
+          return {
+            ...todo,
+            completed: todo.completed ===  false
+          };
+        }
+
+        else return{
+          ...todo,
+          completed: todo.completed === true
+        }
+      })
+    }); 
   }
+
+  removeTask = event => {
+    event.preventDefault();
+
+    this.setState({
+      todos: this.state.todos.filter(todo =>todo.completed === false)
+    })
+  };
+
   // this component is going to take care of state, and any change
   // handlers you need to work with your state
   render() {
@@ -50,6 +76,7 @@ class App extends React.Component {
           handleChanges={this.handleChanges}
           task={this.state.task} 
           addTask={this.addTask}
+          removeTask={this.removeTask}
         />
       </div>
     );
