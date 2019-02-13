@@ -17,16 +17,25 @@ class App extends React.Component {
     event.preventDefault();
 
     this.setState({
-      todos: [...this.state.todos, {task: this.state.task}],
+      todos: [...this.state.todos,
+        {
+          task: this.state.task,
+          id: Date.now(),
+          completed: false
+        }],
       task:''
     });
   };
 
   handleChanges = event => {
     this.setState({
-      [event.target.task]: event.target.value
+      ['task']: event.target.value
     });
   };
+
+  taskToggle = (event) =>{
+    event.target.classList.toggle('completed');
+  }
   // this component is going to take care of state, and any change
   // handlers you need to work with your state
   render() {
@@ -34,6 +43,7 @@ class App extends React.Component {
       <div>
         <TodoList
           todos={this.state.todos}
+          taskToggle={this.taskToggle}
         />
 
         <TodoForm 
