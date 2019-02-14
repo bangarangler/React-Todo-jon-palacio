@@ -58,13 +58,17 @@ html{
 body {
     margin: 0;
     font-family: 'Architects Daughter', cursive;
+    background-image: url('./assets/desktop.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    min-height: 100vh;
 }
 
 .todo-all{
-    width: 100%;
+    width: 90%;
     max-width: 500px;
     margin: auto;
-    margin-top: 10px;
+    margin-top: 30px;
     padding: 20px;
     background: linear-gradient(0.25turn, #f0efcf, #f3f2e4, #f3f2e4, #f3f2e4, #f1f1d4, #f1f1d4);
     border-radius: 5px;
@@ -80,6 +84,7 @@ body {
 .todo-task{
     padding-left: 18px;
     list-style-type: circle;
+    cursor: pointer;
 }
 
 .todo-buffer{
