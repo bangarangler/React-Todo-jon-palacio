@@ -19,8 +19,6 @@ class App extends React.Component {
     });
   };
 
-
-
   addTask = event => {
     event.preventDefault();
 
