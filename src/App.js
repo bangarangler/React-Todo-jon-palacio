@@ -1,6 +1,7 @@
 import React from 'react';
 import TodoList from './components/TodoComponents/TodoList';
 import TodoForm from './components/TodoComponents/TodoForm';
+import './components/TodoComponents/Todo.css';
 
 const todos=[
     {
@@ -78,7 +79,7 @@ class App extends React.Component {
   // handlers you need to work with your state
   render() {
     return (
-      <div>
+      <div className="todo-all">
         <TodoList
           todos={this.state.todos}
           taskToggle={this.taskToggle}
