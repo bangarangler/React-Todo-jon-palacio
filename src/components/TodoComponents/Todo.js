@@ -6,7 +6,7 @@ const Todo = props =>{
         <div>
             <li
                 className="todo-task"
-                style={props.todos.completed ? {textDecoration: 'line-through', color: 'grey'} : null}
+                style={props.todos.completed ? {textDecoration: 'line-through', listStyleType: 'disc'} : null}
                 onClick={()=> props.taskToggle(props.todos.id)}
             >
                 {props.todos.task}

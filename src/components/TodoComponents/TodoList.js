@@ -8,7 +8,7 @@ import './Todo.css';
 const TodoList = props => {
     return (
         <div>
-            <ul className="todo-header">To-Do!</ul>
+            <ul className="todo-header">To-Do:</ul>
             <div className="todo-buffer"></div>
             {props.todos.map((todo) => {
                 return <Todo

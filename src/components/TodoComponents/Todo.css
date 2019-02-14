@@ -64,8 +64,11 @@ body {
     width: 100%;
     max-width: 500px;
     margin: auto;
+    margin-top: 10px;
     padding: 20px;
-    background: linear-gradient(0.25turn, #fff9a2, #fffbda, #fffbda, #fffbda, #fff9a2);
+    background: linear-gradient(0.25turn, #f0efcf, #f3f2e4, #f3f2e4, #f3f2e4, #f1f1d4, #f1f1d4);
+    border-radius: 5px;
+    box-shadow: 5px 10px 30px;
 }
 
 .todo-header{
@@ -76,6 +79,7 @@ body {
 }
 .todo-task{
     padding-left: 18px;
+    list-style-type: circle;
 }
 
 .todo-buffer{
@@ -111,17 +115,17 @@ body {
     background: 0;
     outline: none;
     width: 80%;
-    height: 31px;
+    height: 30px;
     font-family: 'Architects Daughter', cursive;
 }
 
 .todo-form .add-button{
-    padding: 0 18px 0 15px;
+    padding: 0 18.5px 0 15.5px;
     border: 0;
     background: 0;
     outline: none;
     cursor: pointer;
-    height: 31px;
+    height: 30px;
 }
 
 .todo-form .clear-button{
