@@ -2,7 +2,18 @@ import React from 'react';
 import TodoList from './components/TodoComponents/TodoList';
 import TodoForm from './components/TodoComponents/TodoForm';
 
-const todos=[];
+const todos=[
+    {
+    task: 'Organize Garage',
+    id: 1528817077286,
+    completed: false
+  },
+  {
+    task: 'Bake Cookies',
+    id: 1528817084358,
+    completed: false
+  }
+];
 
 class App extends React.Component {
   constructor(){
@@ -33,20 +44,23 @@ class App extends React.Component {
     });
   };
 
-  taskToggle = (event) =>{
-    event.target.classList.toggle('completed');
+  taskToggle = (taskId) =>{
     this.setState({
       todos: this.state.todos.map(todo => {
-        if (todo.completed === false) {
+        if (todo.id !== taskId) {
+          return todo;
+        }
+
+        else if (todo.completed === false) {
           return {
             ...todo,
-            completed: todo.completed ===  false
+            completed: true
           };
         }
 
         else return{
           ...todo,
-          completed: todo.completed === true
+          completed: false
         }
       })
     }); 
