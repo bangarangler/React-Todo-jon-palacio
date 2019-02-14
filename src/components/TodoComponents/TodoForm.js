@@ -3,13 +3,18 @@ import "./Todo.scss";
 
 const TodoForm = props => {
   return (
-    <React.Fragment>
-      <form onSubmit={e => props.thing(e)}>
-        <input type="text" placeholder="What do you need to do?" />
-        <button>Add Todo</button>
+      <form>
+        <input 
+          type="text" 
+          placeholder="What do you need to do?" 
+          name="todo"
+          value={props.value}
+          onChange={props.handleChange}
+        />
+        <button onClick={props.newTodo}>Add Todo</button>
+      <button onClick={props.clrItm}>Clear Completed</button>
       </form>
-      <button onClick={() => props.clear()}>Clear Completed</button>
-    </React.Fragment>
+    
   );
 };
 

@@ -6,55 +6,49 @@ class App extends React.Component {
   constructor() {
     super();
     this.state = {
-      todos: []
+      todos: [],
+    
+      todo: ""
     };
   }
 
-  handleSubmit = e => {
-    e.preventDefault();
-    let text = e.target[0].value;
-    e.target[0].value = "";
-    this.setState(state => ({
-      todos: [
-        ...state.todos,
-        {
-          id: Date.now(),
-          task: text,
-          completed: false
-        }
-      ]
-    }));
-    //debugger;
-  };
+  addTodo = (event) => {
+    event.preventDefault();
+    const newTodo = {task: this.state.todo, id: Date.now(), completed: false};
+    this.setState({todos: [...this.state.todos, newTodo], todo: ""})
+  }
 
-  handleClear = () => {
-    this.setState(state => ({
-      todos: []
-    }));
-  };
+  changeTodo = (event) => this.setState({[event.target.name]: event.target.value})
+
 
   handleComplete = id => {
-    //debugger;
-    this.setState(state => {
-      let items = state.todos.map(itm => {
-        if (itm.id === id) {
-          itm.completed = true;
-        }
-        return itm;
-      });
-      return {
-        todos: [...items]
-      };
-    });
-  };
-  // you will need a place to store your state in this component.
+    let todos = [...this.state.todos]
+    todos = todos.map(todo => {
+      if(todo.id === id) {
+        todo.completed = !todo.completed;
+        return todo;
+      } else {
+        return todo;
+      }
+    }); this.setState({todos});
+  }
+
+  clear = event => {
+    event.preventDefault();
+    let todos = this.state.todos.filter(todo => !todo.completed);
+    this.setState({todos})
+  }
+    // you will need a place to store your state in this component.
   // design `App` to be the parent component of your application.
   // this component is going to take care of state, and any change handlers you need to work with your state
   render() {
-    return (
+    return ( 
       <div>
-        <TodoList todos={this.state.todos} complete={this.handleComplete} />
-        <TodoForm thing={this.handleSubmit} clear={this.handleClear} />
+      
+      <TodoList todos = {this.state.todos} 
+      complete = {this.handleComplete}
+      /> 
+      <TodoForm clrItm={this.clear} handleChange={this.changeTodo} newTodo={this.addTodo} value={this.state.todo}/>
       </div>
     );
   }
