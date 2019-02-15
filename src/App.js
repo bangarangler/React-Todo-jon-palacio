@@ -34,15 +34,17 @@ class App extends React.Component {
   addTask = event => {
     event.preventDefault();
 
-    this.setState({
-      todos: [...this.state.todos,
-        {
-          task: this.state.task,
-          id: Date.now(),
-          completed: false
-        }],
-      task:''
-    });
+    if (this.state.task.length !== 0){
+      this.setState({
+        todos: [...this.state.todos,
+          {
+            task: this.state.task,
+            id: Date.now(),
+            completed: false
+          }],
+        task:''
+      });
+    }
   };
 
   taskToggle = (taskId) =>{
